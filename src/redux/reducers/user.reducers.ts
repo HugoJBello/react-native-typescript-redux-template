@@ -1,18 +1,16 @@
-import {UPDATE_USER, UpdateUserAction, User, UserState} from '../types/users';
+import {UPDATE_USER, UpdateUserAction, User} from '../types/users';
 
-const initialUserState: UserState = {
-  user: {} as User,
-};
+const initialUserState: User = {} as User;
 
 export function userReducer(
-  state: UserState = initialUserState,
+  state: User = initialUserState,
   action: UpdateUserAction,
-): UserState {
+): User {
   switch (action.type) {
     case UPDATE_USER: {
       return {
         ...state,
-        user: action.payload,
+        ...action.payload,
       };
     }
     default:

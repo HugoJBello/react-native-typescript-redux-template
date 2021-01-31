@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, ScrollView, View, Text} from 'react-native';
+import {StyleSheet, ScrollView, View, Text, SafeAreaView} from 'react-native';
 
 import {
   Header,
@@ -8,78 +8,82 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {useSelector} from "react-redux";
-import {User} from "../redux/types/users";
+import {Provider, useDispatch, useSelector} from 'react-redux';
+import {User} from '../redux/types/users';
+import {updateStoredUser} from '../redux/actions/user.actions';
 
 declare const global: {HermesInternal: null | {}};
 
 const Home = () => {
   const user = useSelector((state: any) => state.user as User);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('AAAAAAA');
+    dispatch(updateStoredUser({}));
     console.log(user);
-  }, [user]);
+  }, []);
 
   return (
     <>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.scrollView}>
-        <Header />
-        <View style={styles.body}>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Step One 133</Text>
-            <Text style={styles.sectionDescription}>
-              Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-              screen and then come back to see your edits.
-            </Text>
+      <SafeAreaView>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.scrollView}>
+          <Header />
+          <View style={styles.body}>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Step One 133</Text>
+              <Text style={styles.sectionDescription}>
+                Edit <Text style={styles.highlight}>App.tsx</Text> to change
+                this screen and then come back to see your edits.
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>See Your Changes</Text>
+              <Text style={styles.sectionDescription}>
+                <ReloadInstructions />
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Debug</Text>
+              <Text style={styles.sectionDescription}>
+                <DebugInstructions />
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionDescription}>
+                Read the docs to discover what to do next:
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionDescription}>
+                Read the docs to discover what to do next:
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionDescription}>
+                Read the docs to discover what to do next:
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionDescription}>
+                Read the docs to discover what to do next:
+              </Text>
+            </View>
+            <View style={styles.sectionContainer}>
+              <Text style={styles.sectionTitle}>Learn More</Text>
+              <Text style={styles.sectionDescription}>
+                Read the docs to discover what to do next:
+              </Text>
+            </View>
+            <LearnMoreLinks />
           </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>See Your Changes</Text>
-            <Text style={styles.sectionDescription}>
-              <ReloadInstructions />
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Debug</Text>
-            <Text style={styles.sectionDescription}>
-              <DebugInstructions />
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-            </Text>
-          </View>
-          <View style={styles.sectionContainer}>
-            <Text style={styles.sectionTitle}>Learn More</Text>
-            <Text style={styles.sectionDescription}>
-              Read the docs to discover what to do next:
-            </Text>
-          </View>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
+        </ScrollView>
+      </SafeAreaView>
     </>
   );
 };

@@ -3,10 +3,6 @@ export interface User {
   username: string;
 }
 
-export interface UserState {
-  user: User;
-}
-
 export const UPDATE_USER = 'UPDATE_USER';
 
 export interface UpdateUserAction {
