@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {StyleSheet, ScrollView, View, Text} from 'react-native';
 
 import {
@@ -8,10 +8,19 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import {useSelector} from "react-redux";
+import {User} from "../redux/types/users";
 
 declare const global: {HermesInternal: null | {}};
 
 const Home = () => {
+  const user = useSelector((state: any) => state.user as User);
+
+  useEffect(() => {
+    console.log('AAAAAAA');
+    console.log(user);
+  }, [user]);
+
   return (
     <>
       <ScrollView
