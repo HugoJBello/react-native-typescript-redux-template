@@ -1,20 +1,21 @@
 import React, {useEffect} from 'react';
-import {StyleSheet, ScrollView, View, Text, SafeAreaView} from 'react-native';
-
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-import {Provider, useDispatch, useSelector} from 'react-redux';
+  StyleSheet,
+  ScrollView,
+  View,
+  Text,
+  SafeAreaView,
+  Button,
+} from 'react-native';
+
+import {Header, Colors} from 'react-native/Libraries/NewAppScreen';
+import {useDispatch, useSelector} from 'react-redux';
 import {User} from '../redux/types/users';
 import {updateStoredUser} from '../redux/actions/user.actions';
 
 declare const global: {HermesInternal: null | {}};
 
-const Home = () => {
+const Home = ({navigation}: any) => {
   const user = useSelector((state: any) => state.user as User);
   const dispatch = useDispatch();
 
@@ -29,58 +30,14 @@ const Home = () => {
         <ScrollView
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
-          <Header />
           <View style={styles.body}>
             <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One 133</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.tsx</Text> to change
-                this screen and then come back to see your edits.
-              </Text>
+              <Text style={styles.sectionTitle}>Step One 22</Text>
+              <Button
+                title="Go to Details... again"
+                onPress={() => navigation.push('QuizzesMenu')}
+              />
             </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
           </View>
         </ScrollView>
       </SafeAreaView>
